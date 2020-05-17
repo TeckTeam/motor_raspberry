@@ -81,6 +81,7 @@ if __name__ == '__main__':
     digit = ""
     while True:
         digit = digit + str(kp.getKey())  
+        digit = digit.replace("None", "")
         print(digit)
         if "*" in digit:
             digit = ""  
