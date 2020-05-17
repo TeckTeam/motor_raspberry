@@ -90,11 +90,11 @@ if __name__ == '__main__':
             digit = digit.replace("#", "")
             if digit == password:
                 if mode == False:
-                    os.system("sudo python door.py close")
+                    os.system("sudo python3 door.py close")
                     print("Door close")
                     mode = True
                 else:
-                    os.system("sudo python door.py open")
+                    os.system("sudo python3 door.py open")
                     print("Door open")
                     mode = False
             else:
