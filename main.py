@@ -38,9 +38,9 @@ class keypad():
                     rowVal = i
                     
             # if rowVal is not 0 thru 3 then no button was pressed and we can exit
-            if rowVal < 0 or rowVal > 3:
+            """if rowVal < 0 or rowVal > 3:
                 self.exit()
-                return ""
+                return """
             
             # Convert columns to input
             for j in range(len(self.COLUMN)):
@@ -80,8 +80,10 @@ if __name__ == '__main__':
     # Loop while waiting for a keypress
     digit = ""
     while True:
-        digit = digit + str(kp.getKey())  
-        print(digit)
+        new = str(kp.getKey())
+        if new:
+            digit = digit + new    
+            print(digit)
         if "*" in digit:
             digit = ""  
         if "#" in digit:
@@ -99,4 +101,4 @@ if __name__ == '__main__':
                 print("Wrong Password. Please Try again.")
                 
             digit = ""
-        time.sleep(0.5)
+        time.sleep(0.2)

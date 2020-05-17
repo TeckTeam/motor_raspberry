@@ -46,26 +46,19 @@ def setup():
 	GPIO.setup(IN3, GPIO.OUT)  
 	GPIO.setup(IN4, GPIO.OUT)  
 
-
-def open():
-		backward(0.003, 512)  # 512 steps --- 360 angle  
-        print "open"
-def close(): 
-		forward(0.005, 512)  
-        print "close"
  
 
 def destroy():  
 	GPIO.cleanup()             # Release resource  
-status = sys.argv[2]
+status = str(sys.argv[2])
+print(status)
 if __name__ == '__main__':     # Program start from here  
-	setup()  
-	try:  
-		if status == "open":
-            open()
+    setup()  
+    try:  
+        if status == "open":
+            backward(0.003, 512)
         elif status == "close":
-            close()
-        else:
-            print "Error"
-	except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child function destroy() will be  executed.  
-		destroy()
+            forward(0.005, 512) 
+        destroy()
+    except:  # When 'Ctrl+C' is pressed, the child function destroy() will be  executed.  
+        destroy()
