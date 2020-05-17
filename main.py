@@ -80,9 +80,10 @@ if __name__ == '__main__':
     # Loop while waiting for a keypress
     digit = ""
     while True:
-        print("Hear...")
-        digit = digit + str(kp.getKey())
-        os.system("clear")    
+        digit = digit + str(kp.getKey())  
+        print(digit)
+        if "*" in digit:
+            digit = ""  
         if "#" in digit:
             digit = digit.replace("#", "")
             if digit == password:
