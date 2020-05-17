@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 import os
 
-password = "1234#"
+password = "1234"
 class keypad():
     # CONSTANTS   
     KEYPAD = [
@@ -12,8 +12,8 @@ class keypad():
     ["*",0,"#","D"]
     ]
      
-    ROW         = [11,12,13,15]
-    COLUMN      = [16,18,22,7]
+    ROW = [11,12,13,15]
+    COLUMN = [16,18,22,7]
      
     def __init__(self):
         GPIO.setmode(GPIO.BOARD)
@@ -80,14 +80,17 @@ if __name__ == '__main__':
     # Loop while waiting for a keypress
     digit = ""
     while True:
-        digit = digit + kp.getKey()    
+        digit = digit + str(kp.getKey())    
         if "#" in digit:
+            digit = digit.replace("#", "")
             if digit == password and mode == False:
                 os.system("sudo python door.py close")
+                print("Door close")
             elif digit == password and mode == True:
                 os.system("sudo python door.py open")
+                print("Door open")
             else:
                 print("Wrong Password. Please Try again.")
-                time.sleep(3)
+                
             digit = ""
         time.sleep(0.5)
