@@ -80,15 +80,18 @@ if __name__ == '__main__':
     # Loop while waiting for a keypress
     digit = ""
     while True:
-        digit = digit + str(kp.getKey())    
+        print("Hear...")
+        digit = digit + str(kp.getKey())
+        os.system("clear")    
         if "#" in digit:
             digit = digit.replace("#", "")
-            if digit == password and mode == False:
-                os.system("sudo python door.py close")
-                print("Door close")
-            elif digit == password and mode == True:
-                os.system("sudo python door.py open")
-                print("Door open")
+            if digit == password:
+                if mode == False:
+                    os.system("sudo python door.py close")
+                    print("Door close")
+                else:
+                    os.system("sudo python door.py open")
+                    print("Door open")
             else:
                 print("Wrong Password. Please Try again.")
                 
