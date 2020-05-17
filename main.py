@@ -40,7 +40,7 @@ class keypad():
             # if rowVal is not 0 thru 3 then no button was pressed and we can exit
             if rowVal < 0 or rowVal > 3:
                 self.exit()
-                return
+                return ""
             
             # Convert columns to input
             for j in range(len(self.COLUMN)):
@@ -61,7 +61,7 @@ class keypad():
             # if colVal is not 0 thru 2 then no button was pressed and we can exit
             if colVal < 0 or colVal > 3:
                 self.exit()
-                return
+                return ""
     
             # Return the value of the key pressed
             self.exit()
@@ -81,7 +81,6 @@ if __name__ == '__main__':
     digit = ""
     while True:
         digit = digit + str(kp.getKey())  
-        digit = digit.replace("None", "")
         print(digit)
         if "*" in digit:
             digit = ""  
@@ -91,9 +90,11 @@ if __name__ == '__main__':
                 if mode == False:
                     os.system("sudo python door.py close")
                     print("Door close")
+                    mode = True
                 else:
                     os.system("sudo python door.py open")
                     print("Door open")
+                    mode = False
             else:
                 print("Wrong Password. Please Try again.")
                 
