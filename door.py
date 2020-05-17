@@ -57,7 +57,7 @@ def close():
 
 def destroy():  
 	GPIO.cleanup()             # Release resource  
-status = sys.argv[0]
+status = sys.argv[2]
 if __name__ == '__main__':     # Program start from here  
 	setup()  
 	try:  
